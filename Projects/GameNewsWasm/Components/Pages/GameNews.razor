@@ -1,0 +1,40 @@
+@inject HttpClient Http
+
+<h1>Game News</h1>
+
+@if(GameList is null)
+{
+    <h3>Loading...</h3>
+}
+else
+{
+    @for (int x = 0; x <= GameList.Count / 4; x++)
+    {
+        GameRecordDetails[] gameGroup = GameList.Skip(x * 4).Take(4).ToArray();
+
+        <div class="row">
+
+            @foreach (GameRecordDetails games in gameGroup)
+            {
+                <GameNewsItem GamesData ="@games" />
+
+            }
+
+        </div>
+
+    }
+
+}
+
+@code{
+    List<GameRecordDetails>? GameList { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(2000);
+
+        GameList = await Http.GetFromJsonAsync<List<GameRecordDetails>>("/steamgamesinfo");
+       
+    }
+
+}

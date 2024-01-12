@@ -1,0 +1,47 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = GameNewsWasm
+build_property.RootNamespace = GameNewsWasm
+build_property.ProjectDir = C:\source\GameNewsApp\Projects\GameNewsWasm\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\source\GameNewsApp\Projects\GameNewsWasm
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Pages/GameNews.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYW1lTmV3cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Pages/GameNewsItem.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYW1lTmV3c0l0ZW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-cgaolx27xo
+
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-gs1n4qwcdi

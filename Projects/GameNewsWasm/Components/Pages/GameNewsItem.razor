@@ -1,0 +1,18 @@
+<div class="col-md-3 mb-2">
+   <a href="/MovieReview/@GamesData?.website" style="text-decoration:none">
+        <img class="img-thumbnail" src="@GamesData?.header_image" >
+        <div class="card-body">
+            <p class="card-text">
+                <b>@GamesData?.name</b>
+            </p>
+            <p class="card-text">
+                <b>@((MarkupString)GamesData?.detailed_description)</b>
+            </p>
+        </div>
+    </a> 
+</div>
+
+@code {
+    [Parameter]
+    public GameRecordDetails? GamesData { get; set; }
+}

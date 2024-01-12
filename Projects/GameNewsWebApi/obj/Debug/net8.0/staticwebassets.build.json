@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "aHkSu/2tkMHn9IPI3rt3xz+MJd16X8Sc/q3GHvdQRbM=",
+  "Source": "GameNewsWebApi",
+  "BasePath": "_content/GameNewsWebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

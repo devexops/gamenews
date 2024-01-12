@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\source\\GameNewsApp\\Projects\\GameNewsWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GameNewsWeb.bundle.scp.css",
+      "PackagePath": "staticwebassets\\GameNewsWeb.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\source\\GameNewsApp\\Projects\\GameNewsWeb\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\source\\GameNewsApp\\Projects\\GameNewsWeb\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\source\\GameNewsApp\\Projects\\GameNewsWeb\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\source\\GameNewsApp\\Projects\\GameNewsWeb\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GameNewsWeb.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.GameNewsWeb.props",
+      "PackagePath": "build\\GameNewsWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.GameNewsWeb.props",
+      "PackagePath": "buildMultiTargeting\\GameNewsWeb.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.GameNewsWeb.props",
+      "PackagePath": "buildTransitive\\GameNewsWeb.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
