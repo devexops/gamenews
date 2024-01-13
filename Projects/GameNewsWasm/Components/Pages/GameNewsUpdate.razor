@@ -1,0 +1,47 @@
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+
+<h3>News Updates</h3>
+
+@if (GameNewsItems == null)
+{
+    <h3>Loading...</h3>
+}
+else if (GameNewsItems.news == null || GameNewsItems.news.Count == 0)
+{
+    <h3>No news available.</h3>
+}
+else
+{
+    <div class="row">
+        <div class="col-6">
+            @foreach (Newsitem games in GameNewsItems.news)
+            {
+                <GameNewsUpdateRecord GameNews="@games" />
+            }
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private InfoNews? GameNewsItems { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(1000);
+
+        try
+        {
+            GameNewsItems = await Http.GetFromJsonAsync<InfoNews>($"/steamgamesnews/{Id}");
+            
+        }
+        catch (Exception ex)
+        {
+            // Log the exception to the console
+            await JSRuntime.InvokeVoidAsync("console.error", $"Error fetching Steam games news for AppId {Id}: {ex.Message}");
+        }
+    }
+}

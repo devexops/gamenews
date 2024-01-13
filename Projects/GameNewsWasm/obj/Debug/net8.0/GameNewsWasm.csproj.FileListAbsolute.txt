@@ -615,6 +615,7 @@ C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\GameNewsWasm.Assemb
 C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\GameNewsWasm.AssemblyInfo.cs
 C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\GameNewsWasm.csproj.CoreCompileInputs.cache
 C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\GameNewsWasm.MvcApplicationPartsAssemblyInfo.cache
+C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\GameNewsWasm.sourcelink.json
 C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Authorization.wasm
 C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.wasm
 C:\source\GameNewsApp\Projects\GameNewsWasm\obj\Debug\net8.0\webcil\Microsoft.AspNetCore.Components.Forms.wasm

@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "GameNewsWasm",
   "resources": {
-    "hash": "sha256-dlIVhxTJOK3WVkbs0MLuJybvD2KDgHHfEPZJw6kl9y8=",
+    "hash": "sha256-Upr0Nj7duRsH9LZeRi/wfaoHzxBX6wlp67JnkLnefUE=",
     "jsModuleNative": {
       "dotnet.native.8.0.0-rc.2.23479.6.whk6hql8if.js": "sha256-9prN/5lb3WIsk2ApeMfArAoTBSsUab3y9MBUmgxjV38="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-1t2W3Wyx12dAofkbaubFwjkpFLkAtkKmg+L85yxssZM=",
       "netstandard.wasm": "sha256-3Vgqa/y0nswELYRwVqyttac0Od0d+0XeDQYIcIdj1cw=",
       "System.Private.CoreLib.wasm": "sha256-Oo7gdGvy97AkixYhgHIRAFpMHJ7rzafq9+fG/tXuoTg=",
-      "GameNewsWasm.wasm": "sha256-49cFElz4LZuV3GVmIoZ9vvDfX2KSPn9ByxDqEWqI7DU="
+      "GameNewsWasm.wasm": "sha256-jP0VNF/plVOlnnJvMxVrHXpK6w5pyNraC2BOp3Ok/gw="
     },
     "pdb": {
-      "GameNewsWasm.pdb": "sha256-60WV0CPJY92zAa50Ko8Zxgmhj7Vslv0+fiKJfZzF/bo="
+      "GameNewsWasm.pdb": "sha256-5IffMSVgg0gunbKfvLGZmE4KUIC33zuF/Jqvlm5FGh4="
     }
   },
   "cacheBootResources": true,

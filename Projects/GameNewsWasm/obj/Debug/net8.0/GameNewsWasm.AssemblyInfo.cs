@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameNewsWasm")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9eae44a98daac51c2cf90f7625f63f4d07ba7ddb")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameNewsWasm")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameNewsWasm")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

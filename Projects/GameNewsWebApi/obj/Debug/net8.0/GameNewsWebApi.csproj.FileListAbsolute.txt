@@ -5,6 +5,7 @@ C:\source\GameNewsApp\Projects\GameNewsWebApi\obj\Debug\net8.0\GameNewsWebApi.As
 C:\source\GameNewsApp\Projects\GameNewsWebApi\obj\Debug\net8.0\GameNewsWebApi.csproj.CoreCompileInputs.cache
 C:\source\GameNewsApp\Projects\GameNewsWebApi\obj\Debug\net8.0\GameNewsWebApi.MvcApplicationPartsAssemblyInfo.cs
 C:\source\GameNewsApp\Projects\GameNewsWebApi\obj\Debug\net8.0\GameNewsWebApi.MvcApplicationPartsAssemblyInfo.cache
+C:\source\GameNewsApp\Projects\GameNewsWebApi\obj\Debug\net8.0\GameNewsWebApi.sourcelink.json
 C:\source\GameNewsApp\Projects\GameNewsWebApi\bin\Debug\net8.0\appsettings.Development.json
 C:\source\GameNewsApp\Projects\GameNewsWebApi\bin\Debug\net8.0\appsettings.json
 C:\source\GameNewsApp\Projects\GameNewsWebApi\bin\Debug\net8.0\GameNewsWebApi.exe

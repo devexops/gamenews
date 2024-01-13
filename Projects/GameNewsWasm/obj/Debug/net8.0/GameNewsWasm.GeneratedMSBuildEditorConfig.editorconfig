@@ -30,6 +30,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYW1lTmV3c0l0ZW0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Pages/GameNewsUpdate.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYW1lTmV3c1VwZGF0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Pages/GameNewsUpdateRecord.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xHYW1lTmV3c1VwZGF0ZVJlY29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/source/GameNewsApp/Projects/GameNewsWasm/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

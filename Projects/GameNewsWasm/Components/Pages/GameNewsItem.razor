@@ -1,15 +1,16 @@
 <div class="col-md-3 mb-2">
-   <a href="/MovieReview/@GamesData?.website" style="text-decoration:none">
-        <img class="img-thumbnail" src="@GamesData?.header_image" >
+  
+        <img class="img-thumbnail" src="@GamesData?.header_image" />
         <div class="card-body">
             <p class="card-text">
-                <b>@GamesData?.name</b>
+                 <a href="/GameNewsInfo/@GamesData?.appid">
+                    <b>@GamesData?.name</b>
+                 </a>
             </p>
-            <p class="card-text">
-                <b>@((MarkupString)GamesData?.detailed_description)</b>
+            <p>
+                @((MarkupString)GamesData?.detailed_description)
             </p>
         </div>
-    </a> 
 </div>
 
 @code {

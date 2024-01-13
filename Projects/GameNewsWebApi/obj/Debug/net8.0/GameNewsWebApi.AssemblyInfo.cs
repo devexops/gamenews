@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GameNewsWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9eae44a98daac51c2cf90f7625f63f4d07ba7ddb")]
 [assembly: System.Reflection.AssemblyProductAttribute("GameNewsWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GameNewsWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

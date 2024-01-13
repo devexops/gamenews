@@ -37,48 +37,6 @@ app.UseHttpsRedirection();
 
 app.UseCors(MyAllowSpecificOrigin); // Add this line to enable CORS for the entire application
 
-app.MapGet("/steamgames", async () =>
-{
-    try
-    {
-        // Use HttpClient from the factory
-        var httpClientFactory = app.Services.GetRequiredService<IHttpClientFactory>();
-        var httpClient = httpClientFactory.CreateClient();
-
-        HttpResponseMessage response = await httpClient.GetAsync("https://api.steampowered.com/ISteamApps/GetAppList/v2/");
-       
-        if (response.IsSuccessStatusCode)
-        {
-            string responseData = await response.Content.ReadAsStringAsync();
-            var steamGamesResponse =  JsonConvert.DeserializeObject<SteamGamesResponse>(responseData); // JsonSerializer.Deserialize<SteamGamesResponse>(responseData);
-
-            if (steamGamesResponse != null && steamGamesResponse.applist?.apps != null)
-            {
-                // Limit the number of games to 100
-                List<GameRecord> filteredGames = steamGamesResponse.applist.apps
-                                .Where(app => !string.IsNullOrWhiteSpace(app.name))
-                                .Take(100)
-                                .Select(app => new GameRecord(app.appid, app.name,""))
-                                .ToList();
-           
-                return Results.Json(filteredGames);
-            }
-        }
-
-        // Log the error and return a more specific status code
-        app.Logger.LogError($"Error fetching Steam games. Status code: {response.StatusCode}, Reason: {response.ReasonPhrase}");
-        return Results.StatusCode((int)response.StatusCode);
-    }
-    catch (Exception ex)
-    {
-        // Log the exception
-        app.Logger.LogError($"Function Error: {ex}");
-        return Results.StatusCode(500);
-    }
-})
-.WithName("GetSteamGames")
-.WithOpenApi();
-
 app.MapGet("/steamgamesinfo", async () =>
 {
     try
@@ -97,19 +55,35 @@ app.MapGet("/steamgamesinfo", async () =>
             if (steamGamesResponse != null && steamGamesResponse.applist?.apps != null)
             {
                 // Limit the number of games to 30
-                List<GameRecord> filteredGames = steamGamesResponse.applist.apps
+                List<GameRecord> filteredGames = new List<GameRecord>();
+
+                // Add individual GameRecord instances
+                GameRecord custom1 = new GameRecord { appid = 2426960, name = "Summoners War" , detailed_description ="" };
+                GameRecord custom2 = new GameRecord { appid = 730, name = "Counter-Strike 2"  , detailed_description =""};
+                GameRecord custom3 = new GameRecord { appid = 230410, name = "Warframe"  , detailed_description =""};
+                GameRecord custom4 = new GameRecord { appid = 582010, name = "Monster Hunter: World"  , detailed_description =""};
+
+                filteredGames.Add(custom1);
+                filteredGames.Add(custom2);
+                filteredGames.Add(custom3);
+                filteredGames.Add(custom4);
+
+                // Add a list of GameRecord instances
+                List<GameRecord> newGames = steamGamesResponse.applist.apps
                     .Where(app => !string.IsNullOrWhiteSpace(app.name))
                     .Take(30)
-                    .Select(app => new GameRecord(app.appid, app.name,""))
+                    .Select(app => new GameRecord{ appid= app.appid, name = app.name, detailed_description = ""})
                     .ToList();
 
-               
-                // Make concurrent requests for detailed information about each game
+                filteredGames.AddRange(newGames);
+
+                int delayBetweenRequestsMilliseconds = 1000;
                     var tasks = filteredGames.Select(async game =>
                     {
                         try
                         {
                             var gameDetailsResponse = await httpClient.GetAsync($"http://store.steampowered.com/api/appdetails?appids={game.appid}");
+
                             if (gameDetailsResponse.IsSuccessStatusCode)
                             {
                                 string gameDetailsData = await gameDetailsResponse.Content.ReadAsStringAsync();
@@ -125,6 +99,7 @@ app.MapGet("/steamgamesinfo", async () =>
 
                                     // Navigate to the second level
                                     var level2Data = dynamicKeyObject?.GetValue("data");
+                                 
                                     if (level2Data != null)
                                     {
                                         extractedData = level2Data.ToString(Formatting.Indented);
@@ -140,8 +115,7 @@ app.MapGet("/steamgamesinfo", async () =>
                                 }
 
                                 Root gameDetails = JsonConvert.DeserializeObject<Root>(extractedData);
-                                // Console.WriteLine($"LEVEL 1 -->>>>>>>>>  {gameDetails.detailed_description}");
-                                return new GameRecordDetails(game.name, gameDetails.short_description, gameDetails.header_image, gameDetails.website);
+                                return new GameRecordDetails(game.appid,game.name, gameDetails.short_description, gameDetails.header_image, "");
                             }
                             else
                             {
@@ -156,10 +130,14 @@ app.MapGet("/steamgamesinfo", async () =>
                             app.Logger.LogError($"Error in concurrent request for AppId {game.appid}: {ex.Message}");
                             return null; // Return null or a default GameRecordDetails as needed
                         }
+                        finally
+                        {
+                             await Task.Delay(delayBetweenRequestsMilliseconds);
+                        }
                     });
 
                     var results = await Task.WhenAll(tasks);
-
+            
                     return Results.Json(results.Where(result => result != null).ToList());
             }
         }
@@ -178,12 +156,75 @@ app.MapGet("/steamgamesinfo", async () =>
 .WithName("GetSteamInfo")
 .WithOpenApi();
 
+app.MapGet("/steamgamesnews/{appid}", async (int appid) =>
+{
+    try
+    {
+        // Use HttpClient from the factory
+        var httpClientFactory = app.Services.GetRequiredService<IHttpClientFactory>();
+        var httpClient = httpClientFactory.CreateClient();
+
+        // Replace the {} in the URL with the actual appid parameter
+        HttpResponseMessage response = await httpClient.GetAsync($"https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid={appid}");
+
+        if (response.IsSuccessStatusCode)
+        {
+            string responseData = await response.Content.ReadAsStringAsync();
+             app.Logger.LogError($"JSON News:  { responseData}");
+          
+            var steamGamesResponse = JsonConvert.DeserializeObject<GamesNewsData>(responseData);
+
+            if (steamGamesResponse != null)
+            {
+                // Create a new GameNews object with the relevant properties
+                var gameNews = new InfoNews
+                (
+                    steamGamesResponse.appnews.newsitems
+                );
+                return Results.Json(gameNews);
+            }
+        }
+
+        // Log the error and return a more specific status code
+        app.Logger.LogError($"Error fetching Steam games news for AppId {appid}. Status code: {response.StatusCode}, Reason: {response.ReasonPhrase}");
+        return Results.StatusCode((int)response.StatusCode);
+    }
+    catch (Exception ex)
+    {
+        // Log the exception
+        app.Logger.LogError($"Function Error: {ex}");
+        return Results.StatusCode(500);
+    }
+})
+.WithName("GetSteamGamesNews")
+.WithOpenApi();
+
+
+
 app.Run();
 
 
-public record GameRecord(int appid, string name,string detailed_description);
-public record GameRecordDetails(string name,string detailed_description,string header_image,string link);
+public record GameRecord
+{
+    public int appid { get; init; }
+    public string name { get; init; }
+    public string detailed_description { get; init; }
+}
 
+public record GameNews
+{
+        public string title { get; init; }
+        public string url { get; init; }
+        public string author { get; init; }
+        public string contents { get; init; }
+        public string feedlabel { get; init; }
+        public int date { get; init; }
+        public string feedname { get; init; }
+        public int feed_type { get; init; }
+}
+
+public record GameRecordDetails(int appid, string name,string detailed_description,string header_image,string link);
+public record InfoNews(List<Newsitem> news);
 
 public class SteamGamesResponse
 {
@@ -286,37 +327,11 @@ public class GameDetailsResponse
 
     public class Root
     {
-        public string type { get; set; }
         public string name { get; set; }
         public int steam_appid { get; set; }
-        public int required_age { get; set; }
-        public bool is_free { get; set; }
         public string detailed_description { get; set; }
-        public string about_the_game { get; set; }
         public string short_description { get; set; }
-        public string supported_languages { get; set; }
         public string header_image { get; set; }
-        public string capsule_image { get; set; }
-        public string capsule_imagev5 { get; set; }
-        public string website { get; set; }
-        public PcRequirements pc_requirements { get; set; }
-        public List<object> mac_requirements { get; set; }
-        public List<object> linux_requirements { get; set; }
-        public List<string> developers { get; set; }
-        public List<string> publishers { get; set; }
-        public PriceOverview price_overview { get; set; }
-        public List<int> packages { get; set; }
-        public List<PackageGroup> package_groups { get; set; }
-        public Platforms platforms { get; set; }
-        public List<Category> categories { get; set; }
-        public List<Genre> genres { get; set; }
-        public List<Screenshot> screenshots { get; set; }
-        public List<Movie> movies { get; set; }
-        public ReleaseDate release_date { get; set; }
-        public SupportInfo support_info { get; set; }
-        public string background { get; set; }
-        public string background_raw { get; set; }
-        public ContentDescriptors content_descriptors { get; set; }
     }
 
     public class Screenshot
@@ -349,4 +364,32 @@ public class GameDetailsResponse
         [JsonProperty("480")]
         public string _480 { get; set; }
         public string max { get; set; }
+    }
+
+
+    public class Appnews
+    {
+        public int appid { get; set; }
+        public List<Newsitem> newsitems { get; set; }
+        public int count { get; set; }
+    }
+
+    public class Newsitem
+    {
+       
+        public string title { get; set; }
+  
+        public string author { get; set; }
+        public string contents { get; set; }
+     
+        public int date { get; set; }
+        public string feedname { get; set; }
+    
+        public int appid { get; set; }
+ 
+    }
+
+    public class GamesNewsData
+    {
+        public Appnews appnews { get; set; }
     }

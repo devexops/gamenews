@@ -1,6 +1,6 @@
 @inject HttpClient Http
 
-<h1>Game News</h1>
+<h1>Steam Games List</h1>
 
 @if(GameList is null)
 {
@@ -19,9 +19,7 @@ else
                 <GameNewsItem GamesData ="@games" />
 
             }
-
         </div>
-
     }
 
 }

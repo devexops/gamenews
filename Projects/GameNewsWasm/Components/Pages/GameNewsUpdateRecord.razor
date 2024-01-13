@@ -1,0 +1,20 @@
+
+<div class="p-3">
+    <div class="card w-100">
+        <div class="card-header">
+            @GameNews?.title
+        </div>
+        <div class="card-body overflow-auto">
+            <h5 class="card-title">Source: @GameNews?.feedname</h5>
+            <p> @((MarkupString)GameNews?.contents)</p>
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer">By <cite title="Source Title">@GameNews?.author</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+ 
+@code {
+    [Parameter]
+    public Newsitem? GameNews { get; set; }
+}
